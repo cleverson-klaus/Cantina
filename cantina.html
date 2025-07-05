@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantina da Missã</title>
+    <style>
+        body {
+            background: #2d1a13;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #b22222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .logo-area {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+        .logo {
+            max-width: 98vw;
+            width: 650px;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            animation: floatLogo 2.5s infinite ease-in-out;
+        }
+        .logo-secondary {
+            width: 320px;
+            max-width: 90vw;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            animation: floatLogo 2.5s infinite ease-in-out reverse;
+        }
+        @keyframes floatLogo {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-24px); }
+            100% { transform: translateY(0); }
+        }
+        .container {
+            background: linear-gradient(135deg, #fffbe6 0%, #ffe4e1 100%);
+            padding: 30px 20px;
+            border-radius: 20px;
+            margin-top: 30px;
+            max-width: 400px;
+            width: 90vw;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+            text-align: center;
+        }
+        .pix-input-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0 10px 0;
+        }
+        .pix-input {
+            font-size: 1em;
+            padding: 8px;
+            border-radius: 6px 0 0 6px;
+            border: 1px solid #ffd700;
+            outline: none;
+            width: 80%;
+            color: #b22222;
+            background: #fff;
+        }
+        .copy-btn-input {
+            background: #ffd700;
+            color: #b22222;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 0 6px 6px 0;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .copy-btn-input:hover {
+            background: #ffe066;
+        }
+        .instructions {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #b22222;
+        }
+        @media (max-width: 600px) {
+            .logo {
+                width: 98vw;
+            }
+            .container {
+                padding: 15px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-area">
+        <img src="imagem/Post instagram vermelho restaurante italiano (1).png" alt="Logo Cantina" class="logo">
+    </div>
+    <div class="container">
+        <h2>Pague seu lanche via Pix!</h2>
+        <img src="imagem/qr code.jpg" alt="QR Code Pix" style="width: 260px; margin: 20px auto 10px; display: block; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); background: #fff; padding: 8px;">
+        <div style="margin-bottom: 10px; color: #b22222; font-weight: bold;">Ou copie o código Pix abaixo:</div>
+        <div class="pix-input-group">
+            <input type="text" id="pixInput" class="pix-input" value="00020101021126670014br.gov.bcb.pix0125clerver.klaus@outlook.com0216Compra do lanche52040000530398654048.005802BR5925CLEVERSON GUILHERME KLAUS6008BRASILIA62110507Cantina630447BB" readonly>
+            <button class="copy-btn-input" onclick="copyPixInput()">Copiar</button>
+        </div>
+        <div id="copyMsg" style="color: #ffd700; margin-top: 8px; display: none;">Código copiado!</div>
+        <div class="instructions">
+            <p>1. Escaneie o QR Code acima <b>ou</b> copie o código Pix.</p>
+            <p>2. O valor já está definido: <b>R$ 8,00</b>.</p>
+            <p>3. Abra seu app bancário, pague e mostre o comprovante para retirar seu lanche!</p>
+        </div>
+    </div>
+    <script>
+        function copyPixInput() {
+            const pix = document.getElementById('pixInput').value;
+            navigator.clipboard.writeText(pix).then(function() {
+                document.getElementById('copyMsg').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('copyMsg').style.display = 'none';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
